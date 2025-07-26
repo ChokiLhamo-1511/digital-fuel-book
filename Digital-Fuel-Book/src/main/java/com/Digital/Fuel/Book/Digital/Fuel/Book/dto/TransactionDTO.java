@@ -21,4 +21,8 @@ public class TransactionDTO {
     private Long vehicleId;
     private Long fuelTypeId;
     private Long companyId;
+    private String message;
+    private Double thresholdAmount;
+    private Double pendingTotal;
+    private String fuel_type;
 }

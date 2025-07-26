@@ -186,8 +186,6 @@ public class UsersManagementService {
             String otp = generateOTP();
             user.setOtp(otp);
             usersRepo.save(user);
-            sendVerificationEmail(user.getEmail(), otp);
-
             resp.setMessage("User Registered Successfully");
             resp.setStatusCode(200);
 
@@ -204,11 +202,7 @@ public class UsersManagementService {
         return String.valueOf(otpValue);
     }
 
-    public void sendVerificationEmail(String email, String otp) {
-        String subject = "Email Verification";
-        String body = "Your Verification otp is: " + otp;
-        emailService.sendEmail(email, subject, body);
-    }
+
 
     public ReqRes login(ReqRes loginRequest) {
         ReqRes response = new ReqRes();
@@ -233,8 +227,6 @@ public class UsersManagementService {
                 response.setRefreshToken(refreshToken);
                 response.setExpirationTime("24Hrs");
                 response.setMessage("Successfully Logged In with OTP");
-
-                sendVerificationEmail(user.getEmail(), newOtp);
             } else if (passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
                 UserDetails userDetails = new org.springframework.security.core.userdetails.User(
                         user.getEmail(), user.getPassword(), user.getAuthorities()

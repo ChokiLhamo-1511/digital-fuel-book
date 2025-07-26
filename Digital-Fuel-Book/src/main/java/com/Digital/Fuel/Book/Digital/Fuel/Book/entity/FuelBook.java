@@ -33,7 +33,15 @@ public class FuelBook {
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
-
+    @Override
+    public String toString() {
+        return "FuelBook{" +
+                "id=" + id +
+                ", initialBalance=" + initialBalance +
+                ", currentBalance=" + currentBalance +
+                ", thresholdAmount=" + thresholdAmount +
+                '}';
+    }
 
 
 }

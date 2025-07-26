@@ -9,7 +9,10 @@ import java.util.Optional;
 @Repository
 public interface FuelBookRepo extends JpaRepository<FuelBook,Long> {
     Optional<FuelBook> findTopByOrderByIdDesc();
+
+
     Optional<FuelBook> findByVehicleId(Long vehicleId);
+
 
 
 }

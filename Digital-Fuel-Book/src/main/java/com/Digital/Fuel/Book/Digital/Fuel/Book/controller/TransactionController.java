@@ -25,7 +25,11 @@ public class TransactionController {
 
 
 
-
+    @GetMapping("/all")
+    public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
+        List<TransactionDTO> transactions = transactionService.getAllTransactions();
+        return ResponseEntity.ok(transactions);
+    }
 
 
 }

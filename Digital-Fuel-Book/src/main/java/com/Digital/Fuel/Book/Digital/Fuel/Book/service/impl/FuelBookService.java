@@ -1,21 +1,16 @@
 package com.Digital.Fuel.Book.Digital.Fuel.Book.service.impl;
 
-import com.Digital.Fuel.Book.Digital.Fuel.Book.dto.CompanyDTO;
-import com.Digital.Fuel.Book.Digital.Fuel.Book.dto.FuelBookDTO;
-import com.Digital.Fuel.Book.Digital.Fuel.Book.dto.FuelBook_TypeDTO;
-import com.Digital.Fuel.Book.Digital.Fuel.Book.dto.VehicleDTO;
-import com.Digital.Fuel.Book.Digital.Fuel.Book.entity.Company;
-import com.Digital.Fuel.Book.Digital.Fuel.Book.entity.FuelBook;
-import com.Digital.Fuel.Book.Digital.Fuel.Book.entity.FuelBook_Type;
-import com.Digital.Fuel.Book.Digital.Fuel.Book.entity.Vehicle;
+import com.Digital.Fuel.Book.Digital.Fuel.Book.dto.*;
+import com.Digital.Fuel.Book.Digital.Fuel.Book.entity.*;
 import com.Digital.Fuel.Book.Digital.Fuel.Book.repo.*;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//@RequiredArgsConstructor
 @Service
 public class FuelBookService {
 
@@ -29,6 +24,9 @@ public class FuelBookService {
     private VehicleRepo vehicleRepo;
     @Autowired
     private FuelBook_TypeRepo fuelBookTypeRepo;
+    @Autowired
+    private TransactionRepo transactionRepo;
+
 
 
 
@@ -90,6 +88,7 @@ public class FuelBookService {
 
     private FuelBookDTO toFuelBookDTO(FuelBook fuelBook) {
         FuelBookDTO dto = new FuelBookDTO();
+
         dto.setId(fuelBook.getId());
         dto.setInitialBalance(fuelBook.getInitialBalance());
         dto.setCurrentBalance(fuelBook.getCurrentBalance());

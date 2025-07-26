@@ -21,6 +21,8 @@ public class Transaction {
 
 
 
+
+
     @ManyToOne
     @JoinColumn(name = "fueltype_id", nullable = false)
     private FuelBook_Type fuelBook_type;
@@ -39,5 +41,15 @@ public class Transaction {
 
     public enum TransactionStatus {
         PENDING, APPROVED, COMPLETED, REJECTED
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", liters=" + liters +
+                ", amount=" + amount +
+                ", status=" + status +
+                '}';
     }
 }
